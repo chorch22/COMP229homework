@@ -14,7 +14,7 @@ public class Playlist extends Object {
 	
 	
 	//all following are methods
-	public void clearPlaylist() {
+	public void clearPlaylist() { 
 		if (this.head != null) {
 			Song currentSong = this.head;
 			while (currentSong.next != null) {
@@ -26,12 +26,13 @@ public class Playlist extends Object {
 			}
 		}
 		
-		
 		/**
 		 * Start by making sure this.head is not null
 		 * loop through all songs and replace each with null
 		 */
 		//if there are any songs in play list, it get's rid of all songs 
+		
+		//TODO DOES NOT WORK, fix
 	}
 	
 	public int size() {
@@ -97,6 +98,8 @@ public class Playlist extends Object {
 		
 		//adds a song with specified name to specified position in playlist
 		//Throws IndexOutOfBoundsException if pos is out of bounds
+		
+		//TODO this does not work correctly
 	}
 	public boolean contains (String name) {
 		Song currentSong = this.head;
@@ -108,7 +111,7 @@ public class Playlist extends Object {
 				return true;
 			}
 		}
-		return false;//will this return false every time?
+		return false;//will this return false every time? No!
 	}	
 		/**
 		 * I'm going to loop through songs and compare currentSong name to name
@@ -126,12 +129,14 @@ public class Playlist extends Object {
 		Song currentSong = this.head;
 		int currentPosition = 1;
 		
+
 		while (currentSong.next != null & currentPosition < pos) {
 			currentSong = currentSong.next; 
 			currentPosition ++;
-		}
+			}
 		return currentSong;
-		} //how and where do I throw exception
+		} 
+	//TODO how and where do I throw exception
 		
 		/**
 		 * initialize currentPosition and currentSong to the head (pos 1)
@@ -141,20 +146,65 @@ public class Playlist extends Object {
 		
 		//returns the song at the specified position in the play list
 		//Throws NullPointerException if unable to get song at specified position 
-	}
-	public int getSong(String name) {
+	
+	
+	
+	//TODO public integer getSong(String name) 
 		//returns the index of the first song with specified name from play list
 		//return -1 if play list does not have any songs with specified name
-	}
+	//}
+	
 	public boolean removeSong(int pos) {
+		Song currentSong = this.head;
+		int currentPosition = 1; 
+		
+		if (pos != 1) {
+			while (currentPosition < pos) {
+				currentPosition ++;
+				currentSong = currentSong.next;
+				}
+			currentSong.next = currentSong.next.next;
+			currentSong.next.next.prev  = currentSong; // this seems wrong
+			return true;
+		}
+		else {
+			this.head = this.head.next; 
+			return false;
+		}
+		//TODO need to thow excpetion, also it removes one adter what I want to remove 
+
+		//dereferencing the node with the value from the list
+		
+				//special cases/ base cases/ edge cases 
+				//1. what if I remove the head?
+				//	reassign head to point to head.next
+				
+				//2. What if I remove the tail?
+				//	Find second to last node, assign that node.next = null
+				
+				//3. What if I remove something in between?
+				//	Find the node before the one you want to delete
+				// reassign the reference so that currentNode.next = currentNode.next.next
+				
+				//case 2 and 3 can be combined
+				
+				//1 edge case -> removing the head
+				// general case -> find the node before the one you want to delete (while loop)
+				// 					currentNode.next = currentNode.next.next
+				
 		//removes song at specified position from play list. Shifts any subsequent songs to the left
 		// Throws IndexOutOfBoundsException if specified position is out of bounds
 	}
-	public boolean removeSong(String name) {
+	
+	
+	//TODO public boolean removeSong(String name) {
+		
 		//Removes song with specified name from play list
 		// if multiple, remove the first occurrence
 		//return true if removed successfully, otherwise false
-	}
+	//}
+	
+	
 	public String toString() {
 		//returns a string representation of play list
 		//returns empty string if play list is empty
@@ -192,6 +242,7 @@ public class Playlist extends Object {
 		//uses the line breaks, <br/> in replacement of ->
 		//prints out all the names of all the songs in the list. 
 		//The purpose of this method is to display songs in the Applet.
+		//TODO does not work, only returns "<html> </html>"
 	}
 	
 	
